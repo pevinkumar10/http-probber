@@ -1,7 +1,7 @@
 try:
     from modules.cli.cli import CommandLine
     from colorama import Fore,Style
-    
+
 except ImportError as Ie:
     print(f"[ + ] Import Error [modules.tests.cli]: {Ie}")
 
@@ -59,3 +59,7 @@ def test_helpmenu():
 
             """
     assert help_menu.strip() == expected.strip()
+
+
+def test_argparsing():
+    arguments = cli.get_arguments()
