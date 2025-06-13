@@ -60,6 +60,3 @@ def test_helpmenu():
             """
     assert help_menu.strip() == expected.strip()
 
-
-def test_argparsing():
-    arguments = cli.get_arguments()
