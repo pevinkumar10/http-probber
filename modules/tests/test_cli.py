@@ -27,4 +27,4 @@ def test_banner():
                           Github : pevinkumar10
         """
     
-    assert cli.get_banner == expected
+    assert cli.get_banner() == expected
