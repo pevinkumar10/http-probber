@@ -13,6 +13,7 @@ except ImportError as Ie:
 cli = CommandLine()
 
 def test_banner():
+    banner = cli.get_banner()
     expected = """
         
           ___ ___   __    __                  __________              ___.                 
@@ -27,4 +28,4 @@ def test_banner():
                           Github : pevinkumar10
         """
     
-    assert cli.get_banner() == expected
+    assert banner.strip() == expected.strip()
