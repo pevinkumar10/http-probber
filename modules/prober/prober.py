@@ -7,7 +7,7 @@ except ImportError as Ie:
     exit(1)
 
 class HttpProber:
-    def __init__(self,timeout,verbose = False):
+    def __init__(self,timeout = 0.2,verbose = False):
         self.verbose = verbose
         self.timeout = timeout
 
@@ -15,21 +15,21 @@ class HttpProber:
         
         result = {
             "url":None,
-            "Status":None
+            "status":None
         }
         try:
             async with client_session.get(url) as response:
                 status_code = response.status
 
                 result["url"] = url
-                result["Status"] = status_code
+                result["status"] = status_code
 
         except aiohttp.client_exceptions.InvalidURL:
             if self.verbose:
                 print(f"[ + ]: Invalid url: {url}")
 
             result["url"] = url
-            result["Status"] = "Invalid"
+            result["status"] = "Invalid"
 
             return result
         
@@ -38,7 +38,7 @@ class HttpProber:
                 print(f"[ + ]: Connection Error: {url}")
 
             result["url"] = url
-            result["Status"] = "Error"
+            result["status"] = "Error"
 
             return result
 
