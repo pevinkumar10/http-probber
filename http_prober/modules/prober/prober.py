@@ -46,6 +46,11 @@ class HttpProber:
             "url":None,
             "status":None
         }
+        headers = {
+            "User-Agent": "Mozilla/5.0 (compatible; HttpProber/1.0;)"
+        }
+
+        timeout = aiohttp.ClientTimeout(total=self.timeout)
 
         async with self.semaphore:
             try:
@@ -56,7 +61,7 @@ class HttpProber:
                     url = "https://" + url
                     
                 # Making get request to the url.
-                async with client_session.get(url) as response:
+                async with client_session.get(url ,headers = headers ,timeout = timeout) as response:
                     status_code = response.status
                     result["url"] = url
                     result["status"] = status_code
