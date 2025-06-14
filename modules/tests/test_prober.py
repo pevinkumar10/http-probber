@@ -5,12 +5,13 @@ try:
 
 except ImportError as Ie:
     print(f"[ + ] Import Error [modules.tests.prober]: {Ie}")
+    exit(1)
 
 prober = HttpProber()
 
 @pytest.mark.asyncio
 async def test_make_request():
-    url = 'https://google.com'
+    url = 'https://www.google.com'
     status = 200
 
     async with aiohttp.ClientSession() as client_session:
@@ -21,45 +22,45 @@ async def test_make_request():
 @pytest.mark.asyncio
 async def test_prober():
     urls = [
-        "https://google.com",
-        "https://instagram.com",
-        "https://facebook.com"
+        "https://www.google.com",
+        "https://www.instagram.com",
+        "https://www.facebook.com"
     ]
     expected = [
                 {
-                    "url":"https://google.com",
+                    "url":"https://www.google.com",
                     "status":200
                 },
                 {
-                    "url":"https://instagram.com",
+                    "url":"https://www.instagram.com",
                     "status":200
                 },
                 {
-                    "url":"https://facebook.com",
+                    "url":"https://www.facebook.com",
                     "status":200
                 }
             ]
-    results = await prober.probber(urls)
+    results = await prober.prober(urls)
 
     assert expected == results
 
 def test_run():
     urls = [
-        "https://google.com",
-        "https://instagram.com",
-        "https://facebook.com"
+        "https://www.google.com",
+        "https://www.instagram.com",
+        "https://www.facebook.com"
     ]
     expected = [
                 {
-                    "url":"https://google.com",
+                    "url":"https://www.google.com",
                     "status":200
                 },
                 {
-                    "url":"https://instagram.com",
+                    "url":"https://www.instagram.com",
                     "status":200
                 },
                 {
-                    "url":"https://facebook.com",
+                    "url":"https://www.facebook.com",
                     "status":200
                 }
             ]

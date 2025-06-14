@@ -110,10 +110,10 @@ class CommandLine:
                         -uL,  --url-list                :  List of urls to scan status code.  
 
                     [{self.reset}{self.bold}{self.blue}Options{self.reset}{self.bold}{self.white}]{self.reset}
-                        -t,   --threads                 :  Number of threads (default : 40)               
+                        -c,   --concurrency             :  Number of concurrency allowed to run simultaniously (default : 100)               
 
                     {self.bold}{self.white}[{self.reset}{self.bold}{self.blue}Debug{self.reset}{self.bold}{self.white}]{self.reset}
-                        -d,   --debug                   :  To set debug flag.
+                        -v,   --verbose                 :  To set verbose mode flag for more detailed output.
                         -h,   --help                    :  To see all the available options.
 
                         """
