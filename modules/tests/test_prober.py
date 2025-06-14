@@ -7,7 +7,7 @@ except ImportError as Ie:
     print(f"[ + ] Import Error [modules.tests.prober]: {Ie}")
     exit(1)
 
-prober = HttpProber()
+prober = HttpProber(semaphore_count = 100)
 
 @pytest.mark.asyncio
 async def test_make_request():
