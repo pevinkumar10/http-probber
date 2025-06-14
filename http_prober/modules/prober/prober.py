@@ -47,7 +47,7 @@ class HttpProber:
             "status":None
         }
         headers = {
-            "User-Agent": "Mozilla/5.0 (compatible; HttpProber/1.0;)"
+            "User-Agent": "Mozilla/5.0 (compatible; HttpProber/1.0.0;)"
         }
 
         timeout = aiohttp.ClientTimeout(total=self.timeout)

@@ -19,7 +19,7 @@ def test_read_from_file() -> bool:
             bool    :   Returns True if expected result match with test result.
                 
     """
-    expected = ["google.com\n","facebook.com\n","instagram.com\n","asddsadsf.com\n"]
+    expected = ["www.google.com\n","www.facebook.com\n","www.instagram.com\n","www.example.com\n","www.asddsadsf.com\n"]
     content = read_from_file(test_file)
 
     assert expected == content
