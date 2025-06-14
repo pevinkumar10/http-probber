@@ -11,7 +11,7 @@ except ImportError as Ie:
     exit(1)
 
 class HttpProber:
-    def __init__(self,timeout = 2.5,verbose = False, semaphore_count = 100):
+    def __init__(self,semaphore_count, timeout = 4,verbose = False):
         self.timeout = timeout
         self.verbose = verbose
         self.semaphore = asyncio.Semaphore(semaphore_count)
@@ -25,7 +25,11 @@ class HttpProber:
 
         async with self.semaphore:
             try:
-
+                if url.startswith("http://") or url.startswith("https://"):
+                    url = url
+                else:
+                    url = "https://" + url
+                    
                 async with client_session.get(url) as response:
                     status_code = response.status
                     result["url"] = url
@@ -65,13 +69,12 @@ class HttpProber:
 
     async def prober(self,urls):
         tasks = []
-
         timeout = aiohttp.ClientTimeout(self.timeout)
 
         async with aiohttp.ClientSession(timeout = timeout) as client_session:
 
             for url in urls:
-                tasks.append(self.make_request(url,client_session))
+                tasks.append(self.make_request(url.strip(),client_session))
 
             results = await asyncio.gather(*tasks)
                         
@@ -79,9 +82,6 @@ class HttpProber:
 
 
     def run(self,urls):
-
-        if self.verbose:
-            print(f"[ + ] Total urls to check: {len(urls)}")
         
         start_time = perf_counter()
         results = asyncio.run(self.prober(urls))
@@ -123,8 +123,8 @@ if __name__ == "__main__":
         "https://www.python.org",
         "https://www.nodejs.org",
         "https://www.docker.com",
-        "https://www.kali.org",
-        "https://www.w3.org"
+        "www.kali.org",
+        "www.w3.org"
     ]
 
     probber = HttpProber(verbose = True)
