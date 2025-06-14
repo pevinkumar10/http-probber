@@ -16,6 +16,10 @@ class HttpProber:
 
         http_prober_core.run()
 
-if __name__ == "__main__":
+
+def main():
     prober = HttpProber()
     prober.core_handler()
+
+if __name__ == "__main__":
+    main()

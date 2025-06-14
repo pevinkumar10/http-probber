@@ -22,7 +22,7 @@ reset = Style.RESET_ALL
 
 def test_banner():
     banner = cli.get_banner()
-    expected = """
+    expected = f"""{red}
         
           ___ ___   __    __                  __________              ___.                 
          /   |   \\_/  |__/  |_______          \\______   \\_______  ____\\_ |__   ___________ 
@@ -32,8 +32,8 @@ def test_banner():
                \\/             |__|                                         \\/     \\/       
                                                    
 
-                Async tool to enumerate status code using aiohttp.
-                          Github : pevinkumar10
+                {reset}        Async tool to enumerate status code using aiohttp.
+                                    Github : {green}pevinkumar10{reset}
         """
 
     assert banner.strip() == expected.strip()
