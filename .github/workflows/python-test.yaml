@@ -27,4 +27,4 @@ jobs:
           pip install pytest pytest-asyncio
 
       - name: Run test
-        run: pytest modules/tests
+        run: pytest http_prober/modules/tests
