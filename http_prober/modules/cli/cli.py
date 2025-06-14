@@ -101,7 +101,7 @@ class CommandLine:
                 
         """
         return f"""
-        {self.bold}{self.white}[{self.reset}{self.bold}{self.blue}DESCRIPTION{self.reset}{self.white}]{self.reset}: {self.white}{self.bold}http-prober{self.reset} {self.white}is a tool used to enumerate status code from the given url(s) by{self.reset}{self.bold}{self.green}pevinkumar10{self.reset}.\n
+        {self.bold}{self.white}[{self.reset}{self.bold}{self.blue}DESCRIPTION{self.reset}{self.white}]{self.reset}: {self.white}{self.bold}http-prober{self.reset} {self.white}is a tool used to enumerate status code from the given url(s) by{self.reset}{self.bold}{self.green} Pevinkumar A{self.reset}.\n
             {self.bold}{self.white}[{self.reset}{self.bold}{self.blue}Usage{self.reset}{self.white}]{self.reset}: http-prober [ options ]\n
                     {self.white}http-prober {self.bold}{self.white}<{self.reset}{self.bold}{self.blue}Flags{self.reset}{self.bold}{self.white}>\n
             [{self.reset}{self.bold}{self.blue}Flags{self.reset}{self.bold}{self.white}]

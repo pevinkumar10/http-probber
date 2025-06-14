@@ -61,7 +61,7 @@ def test_helpmenu() -> bool:
     """
     help_menu = cli.get_help()
     expected = f"""
-        {bold}{white}[{reset}{bold}{blue}DESCRIPTION{reset}{white}]{reset}: {white}{bold}http-prober{reset} {white}is a tool used to enumerate status code from the given url(s) by{reset}{bold}{green}pevinkumar10{reset}.\n
+        {bold}{white}[{reset}{bold}{blue}DESCRIPTION{reset}{white}]{reset}: {white}{bold}http-prober{reset} {white}is a tool used to enumerate status code from the given url(s) by{reset}{bold}{green} Pevinkumar A{reset}.\n
             {bold}{white}[{reset}{bold}{blue}Usage{reset}{white}]{reset}: http-prober [ options ]\n
                     {white}http-prober {bold}{white}<{reset}{bold}{blue}Flags{reset}{bold}{white}>\n
             [{reset}{bold}{blue}Flags{reset}{bold}{white}]
