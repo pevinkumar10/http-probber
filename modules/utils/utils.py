@@ -1,5 +1,14 @@
-def read_from_file(file):
+def read_from_file(file:str) -> list:
+    """
+        Function to read the file contents from the given file. 
 
+        Args:
+            file    (str): File name to read the content.  
+            
+        Returns:
+            list    :   Returns content in a list (splited by lines).
+                
+    """
     try:
         with open (file,"r") as opened_file:
             contents = opened_file.readlines()

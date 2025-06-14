@@ -65,7 +65,7 @@ class CommandLine:
                 Arguments for the Http-Prober.
 
         """
-        parser = argparse.ArgumentParser(add_help=False,usage = argparse.SUPPRESS,exit_on_error=False)
+        parser = argparse.ArgumentParser(add_help = False,usage = argparse.SUPPRESS,exit_on_error = False)
         try:
             parser.add_argument("-u","--url",type=str)
             parser.add_argument("-uL","--url-list")
@@ -118,7 +118,3 @@ class CommandLine:
 
                         """
     
-
-if __name__ == "__main__":
-    cli = CommandLine()
-    print(cli.get_banner())

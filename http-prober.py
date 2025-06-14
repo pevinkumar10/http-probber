@@ -7,17 +7,46 @@ except ImportError as Ie:
     exit(1)
 
 class HttpProber:
-    def core_handler(self):
-        
+    """
+        Class to probe the http status code from url(s) using asynchronous programming.
+
+        Args:
+            None
+        Retruns:
+            None
+    """
+    def core_handler(self) -> None:
+        """
+            Http Prober handler to start the core.
+
+            Args:
+                None
+
+            Results:
+                None
+        """
+
+        # Initializing the classes.
         commandline = CommandLine()
         http_prober_core = HttpProberCore()
         
+        # Prining HttpProber's banner. 
         print(commandline.get_banner()) 
 
+        # Starting the Http Prober core.
         http_prober_core.run()
 
 
-def main():
+def main() -> None:
+    """
+        Main function to start Core handler.
+
+        Args:
+            None
+            
+        Returns:
+            None
+    """
     prober = HttpProber()
     prober.core_handler()
 

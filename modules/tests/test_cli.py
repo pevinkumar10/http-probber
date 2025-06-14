@@ -5,8 +5,7 @@ try:
 except ImportError as Ie:
     print(f"[ + ] Import Error [modules.tests.cli]: {Ie}")
 
-# Intializing the CommandLine class
-
+# Intializing the CommandLine class to test.
 cli = CommandLine()
 
 blue = Fore.BLUE
@@ -20,7 +19,17 @@ red = Fore.RED
 bold = Style.BRIGHT
 reset = Style.RESET_ALL
 
-def test_banner():
+def test_banner() -> bool:
+    """
+        Function to test the get_banner in CommandLine class with expected result. 
+
+        Args:
+            None
+            
+        Returns:
+            bool    :   Returns True if expected result match with test result.
+                
+    """
     banner = cli.get_banner()
     expected = f"""{red}
         
@@ -39,7 +48,17 @@ def test_banner():
     assert banner.strip() == expected.strip()
 
 
-def test_helpmenu():
+def test_helpmenu() -> bool:
+    """
+        Function to test the get_help_menu in CommandLine class with expected result. 
+
+        Args:
+            None
+            
+        Returns:
+            bool    :   Returns True if expected result match with test result.
+                
+    """
     help_menu = cli.get_help()
     expected = f"""
         {bold}{white}[{reset}{bold}{blue}DESCRIPTION{reset}{white}]{reset}: {white}{bold}http-prober{reset} {white}is a tool used to enumerate status code from the given url(s) by{reset}{bold}{green}pevinkumar10{reset}.\n
