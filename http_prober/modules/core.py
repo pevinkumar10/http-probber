@@ -1,7 +1,7 @@
 try:
-    from modules.cli.cli import CommandLine
-    from modules.prober.prober import HttpProber
-    from modules.utils.utils import read_from_file
+    from http_prober.modules.cli.cli import CommandLine
+    from http_prober.modules.prober.prober import HttpProber
+    from http_prober.modules.utils.utils import read_from_file
 
 except ImportError as Ie:
     print(f"[ + ] Import Error [modules.core]: {Ie}")
@@ -105,3 +105,7 @@ class HttpProberCore:
                 None
         """
         self.main()
+
+def start():
+    http_prober = HttpProberCore()
+    http_prober.run()

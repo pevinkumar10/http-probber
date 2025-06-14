@@ -1,7 +1,7 @@
 try:
     import pytest
     import aiohttp
-    from modules.prober.prober import HttpProber
+    from http_prober.modules.prober.prober import HttpProber
 
 except ImportError as Ie:
     print(f"[ + ] Import Error [modules.tests.prober]: {Ie}")
