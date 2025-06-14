@@ -10,7 +10,7 @@ except ImportError as Ie:
 
 class HttpProberCore:
 
-    def __init__(self,verbose = True):
+    def __init__(self,verbose = False):
         self.verbose = verbose
         self.default_semaphore_count = 100
         self.commandline = CommandLine()
@@ -29,6 +29,7 @@ class HttpProberCore:
         else:
             if arguments.url or arguments.url_list:
                 if arguments.verbose:
+                    self.verbose = True
                     print(f"[ + ] Verbose mode enabled.")
 
                 urls = []
@@ -53,10 +54,19 @@ class HttpProberCore:
 
                     if self.verbose:
                         print(f"[ + ] Total urls to check: {len(urls)}")
+                
+                print(f"[ + ] Http Prober started !!")
 
-                result = prober.run(urls)
-                print(result)
+                prober_result = prober.run(urls)
 
+                if prober_result:
+                    print(f"\n[ + ] Result:")
+                    for result in prober_result:
+                        print(f"      {result["url"]} [{result["status"]}]")
+
+                else:
+                    print(f"[ ! ] Something went wrong,try again")
+                    exit(1)
 
             else:
                 print("Usage: http-prober ( -u / --url-list ) [options] \nUse --help to see more options.")

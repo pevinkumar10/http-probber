@@ -12,6 +12,7 @@ except ImportError as Ie:
 
 class HttpProber:
     def __init__(self,semaphore_count, timeout = 4,verbose = False):
+
         self.timeout = timeout
         self.verbose = verbose
         self.semaphore = asyncio.Semaphore(semaphore_count)
@@ -45,13 +46,13 @@ class HttpProber:
             
             except asyncio.TimeoutError:
                 result["url"] = url
-                result["status"] = "Timeout"
+                result["status"] = "Timeout Error"
 
                 return result   
 
             except aiohttp.ClientConnectorDNSError:
                 result["url"] = url
-                result["status"] = "Connection Error"
+                result["status"] = "Resolution Error"
 
                 return result
             
