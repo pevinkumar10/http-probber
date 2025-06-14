@@ -38,7 +38,7 @@ class CommandLine:
                 Banner (str) : Banner for the Http-Prober.
                 
         """
-        banner = """
+        banner = f"""{self.red}
         
           ___ ___   __    __                  __________              ___.                 
          /   |   \\_/  |__/  |_______          \\______   \\_______  ____\\_ |__   ___________ 
@@ -48,8 +48,8 @@ class CommandLine:
                \\/             |__|                                         \\/     \\/       
                                                    
 
-                Async tool to enumerate status code using aiohttp.
-                          Github : pevinkumar10
+                {self.reset}        Async tool to enumerate status code using aiohttp.
+                                    Github : {self.green}pevinkumar10{self.reset}
         """
 
         return banner
@@ -69,8 +69,8 @@ class CommandLine:
         try:
             parser.add_argument("-u","--url",type=str)
             parser.add_argument("-uL","--url-list")
-            parser.add_argument("-t","--threads",type=int)
-            parser.add_argument("-d","--debug",action="store_true")
+            parser.add_argument("-c","--concurrency",type=int)
+            parser.add_argument("-v","--verbose",action="store_true")
             parser.add_argument("-h","--help",action="store_true")
 
             arguments = parser.parse_args()
@@ -78,7 +78,7 @@ class CommandLine:
             return arguments
         
         except argparse.ArgumentError:
-            print(f"{self.bright}{self.red}[ ! ] {self.reset}{self.blue}Value needed for the argument Please use -h to get more information.")
+            print(f"{self.bright}{self.red}[ ! ] {self.reset}{self.blue}Value Error ,Please use -h to get more information.")
             exit()
             
         except argparse.ArgumentTypeError:
