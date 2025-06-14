@@ -51,10 +51,10 @@ def test_helpmenu():
                         -uL,  --url-list                :  List of urls to scan status code.  
 
                     [{reset}{bold}{blue}Options{reset}{bold}{white}]{reset}
-                        -t,   --threads                 :  Number of threads (default : 40)               
+                        -c,   --concurrency             :  Number of concurrency allowed to run simultaniously (default : 100)               
 
                     {bold}{white}[{reset}{bold}{blue}Debug{reset}{bold}{white}]{reset}
-                        -d,   --debug                   :  To set debug flag.
+                        -v,   --verbose                 :  To set verbose mode flag for more detailed output.
                         -h,   --help                    :  To see all the available options.
 
             """
