@@ -48,7 +48,7 @@ class CommandLine:
                \\/             |__|                                         \\/     \\/       
                                                    
 
-                {self.reset}        Async tool to enumerate status code using aiohttp.
+                {self.reset}        Async probing tool to enumerate status code using aiohttp.
                                     Github : {self.green}pevinkumar10{self.reset}
         """
 
