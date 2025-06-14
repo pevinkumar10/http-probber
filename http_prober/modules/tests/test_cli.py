@@ -41,8 +41,8 @@ def test_banner() -> bool:
                \\/             |__|                                         \\/     \\/       
                                                    
 
-                {reset}        Async tool to enumerate status code using aiohttp.
-                                    Github : {green}pevinkumar10{reset}
+                {reset}        Async probing tool to enumerate status code using aiohttp.
+                                          Github : {green}pevinkumar10{reset}
         """
 
     assert banner.strip() == expected.strip()
