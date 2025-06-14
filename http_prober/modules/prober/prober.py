@@ -47,7 +47,10 @@ class HttpProber:
             "status":None
         }
         headers = {
-            "User-Agent": "Mozilla/5.0 (compatible; HttpProber/1.0.0;)"
+            "User-Agent": "Mozilla/5.0 (compatible; HttpProber/1.0.0;)",
+            "Accept":"*/*",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Connection": "keep-alive"
         }
 
         timeout = aiohttp.ClientTimeout(total=self.timeout)
@@ -56,7 +59,7 @@ class HttpProber:
             try:
                 # Checking the url.
                 if url.startswith("http://") or url.startswith("https://"):
-                    url = url
+                    pass
                 else:
                     url = "https://" + url
                     
@@ -66,37 +69,27 @@ class HttpProber:
                     result["url"] = url
                     result["status"] = status_code
 
-                    return result
-
             except aiohttp.client_exceptions.InvalidURL:
                 result["url"] = url
                 result["status"] = "Invalid url"
-
-                return result
             
             except asyncio.TimeoutError:
                 result["url"] = url
                 result["status"] = "Timeout Error"
 
-                return result   
-
             except aiohttp.ClientConnectorDNSError:
                 result["url"] = url
                 result["status"] = "Resolution Error"
 
-                return result
-            
             except aiohttp.client_exceptions.ClientResponseError:
                 result["url"] = url
-                result["status"] = "Error"
-
-                return result 
+                result["status"] = "Response Error"
             
             except Exception:
                 result["url"] = url
-                result["status"] = "Error"
+                result["status"] = "Unexpected Error"
 
-                return result
+            return result
 
     async def prober(self,urls:list) -> list:
         """
