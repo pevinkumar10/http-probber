@@ -2,7 +2,7 @@
 
 The http-prober is a Async http statuscode probing CLI tool. Which can check list of urls and print the status code of it.
 <h1 align="center">
-  <img src="img/http-prober-banner.png" alt="http-prober" width="450px">
+  <img src="img/banner.png" alt="http-prober" width="450px">
   <br>
 </h1>
 
@@ -16,4 +16,4 @@ The http-prober is a Async http statuscode probing CLI tool. Which can check lis
 
 - Uses Asynchronous programming to enumerate the status code.
 - Best modular design with the focus on future improvement and enhancement.
-- 
+- Improved UI for better UX. 
