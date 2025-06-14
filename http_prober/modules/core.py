@@ -33,6 +33,9 @@ class HttpProberCore:
             Retruns:
                 None. 
         """
+        # Prining HttpProber's banner. 
+        print(self.commandline.get_banner())
+
         arguments = self.commandline.get_arguments()
 
         if arguments.help:
@@ -104,6 +107,7 @@ class HttpProberCore:
             Returns:
                 None
         """
+        
         self.main()
 
 def start():

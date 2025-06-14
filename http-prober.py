@@ -1,5 +1,4 @@
 try:
-    from http_prober.modules.cli.cli import CommandLine
     from http_prober.modules.core import HttpProberCore
 
 except ImportError as Ie:
@@ -26,12 +25,8 @@ class HttpProber:
                 None
         """
 
-        # Initializing the classes.
-        commandline = CommandLine()
-        http_prober_core = HttpProberCore()
-        
-        # Prining HttpProber's banner. 
-        print(commandline.get_banner()) 
+        # Initializing the class.
+        http_prober_core = HttpProberCore() 
 
         # Starting the Http Prober core.
         http_prober_core.run()
