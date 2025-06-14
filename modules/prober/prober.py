@@ -1,6 +1,3 @@
-import aiohttp.connector
-
-
 try:
     import asyncio
     import aiohttp
@@ -11,13 +8,39 @@ except ImportError as Ie:
     exit(1)
 
 class HttpProber:
-    def __init__(self,semaphore_count, timeout = 4,verbose = False):
+    """
+        Class to probe the http status code from url(s) using asynchronous programming.
 
+        Args:
+            semaphore_count (int):  To specify the maximum number of tasks to run simultaniously ( default 100 ).
+            timeout (int):   To specify the maximum waiting time for a task.
+            verbose (bool):  To enable verbose mode. 
+
+        Retruns:
+            list: It returns the list for urls with statuscodes. 
+    """
+    def __init__(self,semaphore_count:int, timeout:int = 4,verbose:bool = False) -> None:
         self.timeout = timeout
         self.verbose = verbose
         self.semaphore = asyncio.Semaphore(semaphore_count)
 
-    async def make_request(self,url,client_session):
+    async def make_request(self,url:str,client_session:object) -> dict:
+        """
+            Async coroutine to make a request to the given url.
+
+            Args:
+                url (str)   : Url to make to check status code.
+                client_session  (object):   The client session object which is used to make request to the url.
+
+            Returns:
+                dict    :   Retruns the dictionary of url with its statuscode.
+
+                Example: 
+                result = {
+                        "url":"https://www.google.com",
+                        "status":200
+                    }
+        """
         
         result = {
             "url":None,
@@ -26,11 +49,13 @@ class HttpProber:
 
         async with self.semaphore:
             try:
+                # Checking the url.
                 if url.startswith("http://") or url.startswith("https://"):
                     url = url
                 else:
                     url = "https://" + url
                     
+                # Making get request to the url.
                 async with client_session.get(url) as response:
                     status_code = response.status
                     result["url"] = url
@@ -68,12 +93,31 @@ class HttpProber:
 
                 return result
 
-    async def prober(self,urls):
+    async def prober(self,urls:list) -> list:
+        """
+            Async coroutine to probe the given urls.
+
+            Args:
+                urls (list)   : Urls to make to check status code.
+
+            Returns:
+                list    :   Retruns the list of urls with its statuscodes in a dictionary.
+
+                Example: 
+                result = [
+                {
+                    "url":"https://www.google.com",
+                    "status":200
+                },{
+                    "url":"https://www.facebook.com",
+                    "status":200
+                }
+        """
         tasks = []
         timeout = aiohttp.ClientTimeout(self.timeout)
 
         async with aiohttp.ClientSession(timeout = timeout) as client_session:
-
+            
             for url in urls:
                 tasks.append(self.make_request(url.strip(),client_session))
 
@@ -82,8 +126,18 @@ class HttpProber:
         return results
 
 
-    def run(self,urls):
-        
+    def run(self,urls:list) -> list:
+        """
+            Function to start the HttpProber.
+            
+            Args:
+                urls    (list): Urls to make to check status code.
+
+            Returns:
+                list    :   Retruns the list of urls with its statuscodes in a dictionary.
+
+        """
+        # Calculation the completion time of http probing.
         start_time = perf_counter()
         results = asyncio.run(self.prober(urls))
         end_time = perf_counter()

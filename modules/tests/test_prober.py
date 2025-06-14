@@ -7,10 +7,21 @@ except ImportError as Ie:
     print(f"[ + ] Import Error [modules.tests.prober]: {Ie}")
     exit(1)
 
+# Initializing HttpProber class to test.
 prober = HttpProber(semaphore_count = 100)
 
 @pytest.mark.asyncio
-async def test_make_request():
+async def test_make_request() -> bool:
+    """
+        Async coroutine to test the make_request coroutine in HttpProber class with expected result. 
+
+        Args:
+            None
+            
+        Returns:
+            bool    :   Returns True if expected result match with test result.
+                
+    """
     url = 'https://www.google.com'
     status = 200
 
@@ -20,7 +31,17 @@ async def test_make_request():
     assert result["status"] == status
 
 @pytest.mark.asyncio
-async def test_prober():
+async def test_prober() -> bool:
+    """
+        Async coroutine to test the prober coroutine in HttpProber class with expected result. 
+
+        Args:
+            None
+            
+        Returns:
+            bool    :   Returns True if expected result match with test result.
+                
+    """
     urls = [
         "https://www.google.com",
         "https://www.instagram.com",
@@ -44,7 +65,17 @@ async def test_prober():
 
     assert expected == results
 
-def test_run():
+def test_run() -> bool:
+    """
+        Function to test the run function in HttpProber class with expected result. 
+
+        Args:
+            None
+            
+        Returns:
+            bool    :   Returns True if expected result match with test result.
+                
+    """
     urls = [
         "https://www.google.com",
         "https://www.instagram.com",
