@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  release:
+    types:
+      - created
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - name: Install build tools
+        run: |
+          pip install build twine
+
+      - name: Build and upload to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          python3 -m build
+          python3 -m twine upload dist/*
