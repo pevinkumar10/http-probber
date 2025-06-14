@@ -14,7 +14,7 @@ setup(
     ],
     entry_points = {
         'console_scripts': [
-            'http-prober = http-prober:main'
+            'http-prober = http_prober.modules.core:start'
         ]
     },
     classifiers = [

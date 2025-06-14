@@ -1,5 +1,5 @@
 try:
-    from modules.utils.utils import read_from_file
+    from http_prober.modules.utils.utils import read_from_file
 
 except ImportError as Ie:
     print(f"[ + ] Import Error [modules.tests.utils]: {Ie}")

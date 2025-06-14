@@ -1,5 +1,5 @@
 try:
-    from modules.cli.cli import CommandLine
+    from http_prober.modules.cli.cli import CommandLine
     from colorama import Fore,Style
 
 except ImportError as Ie:

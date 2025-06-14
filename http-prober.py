@@ -1,6 +1,6 @@
 try:
-    from modules.cli.cli import CommandLine
-    from modules.core import HttpProberCore
+    from http_prober.modules.cli.cli import CommandLine
+    from http_prober.modules.core import HttpProberCore
 
 except ImportError as Ie:
     print(f"[ + ] Import Error [modules.core]: {Ie}")
