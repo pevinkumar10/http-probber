@@ -60,6 +60,16 @@
 
 ### Install it from PyPi:
 
+For windows:
+
+```bash
+
+pip install Http-Prober
+
+```
+
+For Linux and Unix:
+
 ```bash
 
 pipx install Http-Prober
