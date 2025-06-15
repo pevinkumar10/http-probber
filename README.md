@@ -58,6 +58,17 @@
 
 ## Installation:
 
+### Install it from PyPi:
+
+```bash
+
+pipx install Http-Prober
+```
+
+This will install the tool in an isolated environment (Recommended). 
+
+### Manual Installation:
+
 - Step 1:
     ```bash
     git clone https://github.com/pevinkumar10/http-prober.git
@@ -79,7 +90,7 @@
     
     or
 
-    Install it as a tool by setup.py (Recommended):
+    Install it as a tool by setup.py:
 
     ```
     pipx install .
@@ -107,7 +118,7 @@
   
 ```bash
 
-    http-prober -uL urls.txt -v 
+    http-prober --url-list urls.txt --verbose
 
 ```
 
