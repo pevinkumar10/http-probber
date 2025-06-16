@@ -1,4 +1,6 @@
 try:
+    from colorama import Fore,Style
+    from http_prober.modules.extender.extender import extender
     from http_prober.modules.cli.cli import CommandLine
     from http_prober.modules.prober.prober import HttpProber
     from http_prober.modules.utils.utils import read_from_file
@@ -19,6 +21,17 @@ class HttpProberCore:
             None. 
     """
     def __init__(self,verbose:bool = False) -> None:
+        self.blue = Fore.BLUE
+        self.red = Fore.RED
+        self.blue = Fore.BLUE
+        self.white = Fore.WHITE
+        self.magenta = Fore.MAGENTA
+        self.bright = Style.BRIGHT
+        self.green = Fore.GREEN
+        self.red = Fore.RED
+        self.bold = Style.BRIGHT
+        self.reset = Style.RESET_ALL
+
         self.verbose = verbose
         self.default_semaphore_count = 100
         self.commandline = CommandLine()
@@ -36,6 +49,10 @@ class HttpProberCore:
         # Prining HttpProber's banner. 
         print(self.commandline.get_banner())
 
+        # Extending the resource allocation.
+        extender()
+
+        # Geting arguments for the http prober.
         arguments = self.commandline.get_arguments()
 
         if arguments.help:
@@ -81,17 +98,7 @@ class HttpProberCore:
                 print(f"[ + ] Http Prober started !!")
 
                 # Starting the http prober with urls.
-                prober_result = prober.run(urls)
-
-                # printing enumerated results.
-                if prober_result:
-                    print(f"\n[ + ] Result:")
-                    for result in prober_result:
-                        print(f"      {result["url"]} [{result["status"]}]")
-
-                else:
-                    print(f"[ ! ] Something went wrong,try again")
-                    exit(1)
+                prober.run(urls)
 
             else:
                 print("Usage: http-prober ( -u / --url-list ) [options] \nUse --help to see more options.")
