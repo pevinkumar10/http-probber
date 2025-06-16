@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name = 'Http-Prober',
     version = '1.1.2',
-    description = 'An async http statuscode prober to enumerate status code from url(s)',
+    description = 'An async http statuscode prober to enumerate status code from url(s).',
     author = 'Pevinkumar A',
     author_email = 'pevinbalaji@gmail.com',
     url = 'https://github.com/pevinkumar10/http-prober',
