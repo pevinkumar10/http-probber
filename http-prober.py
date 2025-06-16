@@ -2,7 +2,7 @@ try:
     from http_prober.modules.core import HttpProberCore
 
 except ImportError as Ie:
-    print(f"[ + ] Import Error [modules.core]: {Ie}")
+    print(f"[ + ] Import Error [modules.http-prober]: {Ie}")
     exit(1)
 
 class HttpProber:
