@@ -10,7 +10,9 @@ setup(
     packages = find_packages(),
     install_requires = [
         'aiohttp',
-        'colorama'
+        'colorama',
+        'resources',
+        'httpx'
     ],
     entry_points = {
         'console_scripts': [
