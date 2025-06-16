@@ -6,7 +6,7 @@ except ImportError as Ie:
     exit(1)
 
 # Default test file.
-test_file = 'urls.txt'
+test_file = 'http_prober/modules/tests/urls.txt'
 
 def test_read_from_file() -> bool:
     """
@@ -19,7 +19,7 @@ def test_read_from_file() -> bool:
             bool    :   Returns True if expected result match with test result.
                 
     """
-    expected = ["www.google.com\n","www.facebook.com\n","www.instagram.com\n","www.example.com\n","www.asddsadsf.com\n"]
+    expected = ["www.google.com\n","www.facebook.com\n","www.instagram.com\n","www.example.com\n","www.asddsadsf.com"]
     content = read_from_file(test_file)
 
     assert expected == content

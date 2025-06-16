@@ -52,7 +52,7 @@ class HttpProber:
         }
 
         max_retry = 2
-        retry_delay = self.timeout
+        retry_delay = 3
 
         async with self.semaphore:
             failed_reason = ""
@@ -95,7 +95,7 @@ class HttpProber:
                     print(f"      {self.bold}{self.red}{url}{self.reset} {self.bold}{self.white}[{self.reset}{failed_reason}{self.bold}{self.white}]{self.reset}")
 
 
-    async def prober(self,urls:list) -> list:
+    async def prober(self,urls:list) -> None:
         """
             Async coroutine to probe the given urls.
 
@@ -103,17 +103,7 @@ class HttpProber:
                 urls (list)   : Urls to make to check status code.
 
             Returns:
-                list    :   Retruns the list of urls with its statuscodes in a dictionary.
-
-                Example: 
-                result = [
-                {
-                    "url":"https://www.google.com",
-                    "status":200
-                },{
-                    "url":"https://www.facebook.com",
-                    "status":200
-                }
+                None
         """
         tasks = []
         timeout = httpx.Timeout(timeout = self.timeout)
@@ -123,12 +113,11 @@ class HttpProber:
             for url in urls:
                 tasks.append(self.make_request(url.strip(),timeout,client_session))
 
-            results = await asyncio.gather(*tasks)
-                        
-        return results
+            await asyncio.gather(*tasks)
 
 
-    def run(self,urls:list) -> list:
+
+    def run(self,urls:list) -> None:
         """
             Function to start the HttpProber.
             
@@ -141,10 +130,8 @@ class HttpProber:
         """
         # Calculation the completion time of http probing.
         start_time = perf_counter()
-        results = asyncio.run(self.prober(urls))
+        asyncio.run(self.prober(urls))
         end_time = perf_counter()
 
         if self.verbose:
             print(f"[ + ] Http probing completed in: {end_time - start_time} sec")
-
-        return results
