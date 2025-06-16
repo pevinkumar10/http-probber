@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'Http-Prober',
-    version = '1.1.1',
+    version = '1.1.0',
     description = 'An async http statuscode prober to enumerate status code from url(s)',
     author = 'Pevinkumar A',
     author_email = 'pevinbalaji@gmail.com',
@@ -11,7 +11,7 @@ setup(
     install_requires = [
         'aiohttp',
         'colorama',
-        'resources',
+        'resource',
         'httpx'
     ],
     entry_points = {
